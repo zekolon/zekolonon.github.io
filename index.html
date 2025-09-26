@@ -19,7 +19,6 @@
     cursorImg.style.display = "block";
     cursorImg.style.left = e.clientX - 24 + "px";
     cursorImg.style.top = e.clientY - 24 + "px";
-
   });
   document.addEventListener("mouseleave", function () {
     cursorImg.style.display = "none";
@@ -37,17 +36,78 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="status-bar">
-      <span class="status-emoji"><embed src="assets/Adobe Express - file.png" width="50"></span>
-          <span class="status-text">Welcome to my Hypnopage!</span>
-      <span class="status-text">Welcome to my Hypnopage!</span>
-      <span class="status-right">Online</span>
+    <div
+      class="status-bar"
+      style="display: flex; align-items: stretch; gap: 0; padding: 0"
+    >
+      <div
+        class="status-image-box"
+        style="
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: #333;
+          padding: 0 20px;
+        "
+      >
+        <img
+          src="assets/Adobe Express - file.png"
+          alt="Status Icon"
+          width="50"
+          height="50"
+          style="display: block"
+        />
+      </div>
+      <div
+        class="status-info-box"
+        style="
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          background: none;
+          padding: 10px 24px;
+          flex: 1;
+          align-items: flex-start;
+        "
+      >
+        <span class="status-label" style="font-weight: bold; font-size: 1.1em"
+          >Logan Evans's Status:</span
+        >
+        <span
+          class="status-sub"
+          style="font-size: 0.95em; color: #bdbdbd; margin-top: 2px"
+          >Playing Trench Crusade!</span
+        >
+      </div>
+      <div
+        class="status-separator"
+        style="
+          width: 2px;
+          background: #444;
+          margin: 0 0.5em;
+          border-radius: 2px;
+        "
+      ></div>
+      <div
+        class="status-online-box"
+        style="
+          display: flex;
+          align-items: center;
+          background: none;
+          padding: 0 24px;
+        "
+      >
+        <span
+          class="status-online"
+          style="font-weight: bold; color: #7fffd4; font-size: 1.1em"
+          >Online</span
+        >
+      </div>
     </div>
     <div class="main-content">
       <h1>Logan Evan's HypnoPage</h1>
       <p>
-        This is my personal page, inspired by Hypnospace Outlaw
-        Outlaw.<br />
+        This is my personal page, inspired by Hypnospace Outlaw Outlaw.<br />
         Explore my projects, check my status.
       </p>
       <div class="hypno-links">

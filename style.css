@@ -34,7 +34,31 @@ div {
   -ms-user-select: none;
   -moz-user-select: none;
 }
-/* Fading mouse trail effect */
+
+/* Pixelated text effect for all elements */
+body,
+.main-content,
+.status-bar,
+.hypno-box,
+.hypno-link,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span,
+label,
+select,
+option,
+div {
+  font-family: "Press Start 2P", "VT323", "Courier New", Courier, monospace !important;
+  text-rendering: optimizeSpeed;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap");
+
 body {
   background: #111;
   color: #e0e0e0;
@@ -91,12 +115,11 @@ body,
 .main-content {
   max-width: 1200px;
   margin: 3em auto 0 auto;
-  background: #222;
-  border-radius: 12px;
-  box-shadow: 0 0 24px #000a;
+  background: linear-gradient(135deg, #444 0%, #3a7bd5 100%);
+  border-radius: 0;
   padding: 2.5em 2em 2em 2em;
   position: relative;
-  min-height: 500px;
+  min-height: 700px;
 }
 
 h1 {
@@ -144,4 +167,38 @@ h1 {
 .hypno-box p {
   color: #e0e0e0;
   margin-bottom: 0;
+}
+
+/* Pop-in animation for boxes */
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  80% {
+    transform: scale(0.97);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.status-bar,
+.main-content,
+.hypno-box {
+  opacity: 0;
+  animation: popIn 0.7s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
+}
+.status-bar {
+  animation-delay: 0.1s;
+}
+.main-content {
+  animation-delay: 0.3s;
+}
+.hypno-box {
+  animation-delay: 0.5s;
 }
