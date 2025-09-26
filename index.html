@@ -1,13 +1,160 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>CHANGE ME</title>
-  </head>
+<!-- Custom Mouse Pointer Image -->
+<img
+  id="custom-cursor"
+  src="assets/bright-blue-mouse-cursor-hd-png-Cg24Mv.png"
+  alt="Custom Cursor"
+  style="display: none"
+/>
+<script>
+  // Hide system cursor and show custom image following mouse
+  const cursorImg = document.getElementById("custom-cursor");
+  cursorImg.style.position = "fixed";
+  cursorImg.style.pointerEvents = "none";
+  cursorImg.style.zIndex = "10000";
+  cursorImg.style.width = "48px";
+  cursorImg.style.height = "48px";
+  document.body.style.cursor = "none";
 
+  document.addEventListener("mousemove", function (e) {
+    cursorImg.style.display = "block";
+    cursorImg.style.left = e.clientX - 24 + "px";
+    cursorImg.style.top = e.clientY - 24 + "px";
+
+  });
+  document.addEventListener("mouseleave", function () {
+    cursorImg.style.display = "none";
+  });
+  document.addEventListener("mouseenter", function () {
+    cursorImg.style.display = "block";
+  });
+</script>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
   <body>
-    <!-- All content goes here -->
-    <div id="all-contents">
-      
+    <div class="status-bar">
+      <span class="status-emoji"><embed src="assets/Adobe Express - file.png" width="50"></span>
+          <span class="status-text">Welcome to my Hypnopage!</span>
+      <span class="status-text">Welcome to my Hypnopage!</span>
+      <span class="status-right">Online</span>
     </div>
+    <div class="main-content">
+      <h1>Logan Evan's HypnoPage</h1>
+      <p>
+        This is my personal page, inspired by Hypnospace Outlaw
+        Outlaw.<br />
+        Explore my projects, check my status.
+      </p>
+      <div class="hypno-links">
+        <a href="#" class="hypno-link">Guestbook</a>
+        <a href="#" class="hypno-link">Projects</a>
+        <a href="#" class="hypno-link">About</a>
+      </div>
+      <div class="hypno-box">
+        <h2>Latest Update</h2>
+        <p>Feeling creative and coding up a storm. Stay tuned for more!</p>
+      </div>
+    </div>
+    <canvas id="rain-canvas"></canvas>
   </body>
+  <script>
+    // Rain effect
+    const rainCanvas = document.getElementById("rain-canvas");
+    function resizeRainCanvas() {
+      rainCanvas.width = window.innerWidth;
+      rainCanvas.height = window.innerHeight;
+      rainCanvas.style.position = "fixed";
+      rainCanvas.style.left = "0";
+      rainCanvas.style.top = "0";
+      rainCanvas.style.pointerEvents = "none";
+      rainCanvas.style.zIndex = "9998";
+    }
+    resizeRainCanvas();
+    window.addEventListener("resize", resizeRainCanvas);
+
+    const ctx = rainCanvas.getContext("2d");
+    const raindrops = [];
+    const rainColor = "rgba(120,180,255,0.45)";
+    const rainCount = 80;
+    for (let i = 0; i < rainCount; i++) {
+      raindrops.push({
+        x: Math.random() * window.innerWidth,
+        y: Math.random() * window.innerHeight,
+        len: 10 + Math.random() * 18,
+        speed: 3 + Math.random() * 4,
+      });
+    }
+    function drawRain() {
+      ctx.clearRect(0, 0, rainCanvas.width, rainCanvas.height);
+      ctx.strokeStyle = rainColor;
+      ctx.lineWidth = 1.2;
+      ctx.lineCap = "round";
+      for (let drop of raindrops) {
+        ctx.beginPath();
+        ctx.moveTo(drop.x, drop.y);
+        ctx.lineTo(drop.x, drop.y + drop.len);
+        ctx.stroke();
+        drop.y += drop.speed;
+        if (drop.y > window.innerHeight) {
+          drop.x = Math.random() * window.innerWidth;
+          drop.y = -drop.len;
+          drop.len = 10 + Math.random() * 18;
+          drop.speed = 3 + Math.random() * 4;
+        }
+      }
+      requestAnimationFrame(drawRain);
+    }
+    drawRain();
+    // Hide default cursor and show image following mouse
+    const cursorImg = document.getElementById("custom-cursor");
+    cursorImg.style.position = "fixed";
+    cursorImg.style.pointerEvents = "none";
+    cursorImg.style.zIndex = "10000";
+    cursorImg.style.width = "48px";
+    cursorImg.style.height = "48px";
+    document.body.style.cursor = "none";
+    let normalCursor = "assets/bright-blue-mouse-cursor-hd-png-Cg24Mv.png";
+    let pointerCursor = "assets/Adobe Express - file.png"; // Change to your pointer image
+
+    document.addEventListener("mousemove", function (e) {
+      cursorImg.style.display = "block";
+      cursorImg.style.left = e.clientX - 24 + "px";
+      cursorImg.style.top = e.clientY - 24 + "px";
+    });
+    document.addEventListener("mouseleave", function () {
+      cursorImg.style.display = "none";
+    });
+    document.addEventListener("mouseenter", function () {
+      cursorImg.style.display = "block";
+    });
+
+    // Change cursor image on hover over clickable elements
+    function setPointerCursor() {
+      if (cursorImg.src !== window.location.origin + "/" + pointerCursor) {
+        cursorImg.src = pointerCursor;
+      }
+    }
+    function setNormalCursor() {
+      if (cursorImg.src !== window.location.origin + "/" + normalCursor) {
+        cursorImg.src = normalCursor;
+      }
+    }
+
+    // For all clickable elements
+    const clickables = document.querySelectorAll(
+      'a, button, [role="button"], input[type="button"], input[type="submit"], .hypno-link'
+    );
+    clickables.forEach((el) => {
+      el.addEventListener("mouseenter", setPointerCursor);
+      el.addEventListener("mouseleave", setNormalCursor);
+    });
+
+    // Set initial cursor image
+    cursorImg.src = normalCursor;
+  </script>
 </html>
