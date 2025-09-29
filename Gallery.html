@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gallery</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="status-bar-container"></div>
+  <script>
+    // Dynamically load the shared status bar
+    fetch('status-bar.html')
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById('status-bar-container').innerHTML = html;
+      });
+  </script>
+   <div class="main-content" style="display: flex; flex-direction: row; align-items: flex-start;">
+      <div style="flex: 1;">
+        <h1>Gallery</h1>
+        <p style="text-align: center;">
+          This is my Gallery where I put pictures relating to my hobbies and etc.
+        </p>
+    <a href="index.html" style="position: absolute; top: 1em; left: 1em; z-index: 10; font-size: 1.1em; color: #7fffd4; text-decoration: underline; font-weight: bold; background: #181818cc; padding: 0.3em 0.8em; border-radius: 8px;">&larr; Home</a>
+    <a href="portfolio.html" style="position: absolute; top: 3.2em; left: 1em; z-index: 10; font-size: 1.1em; color: #7fffd4; text-decoration: underline; font-weight: bold; background: #181818cc; padding: 0.3em 0.8em; border-radius: 8px;">&larr; Portfolio</a>
+    <a href="Videos.html" style="position: absolute; top: 1em; right: 1em; z-index: 10; font-size: 1.1em; color: #7fffd4; text-decoration: underline; font-weight: bold; background: #181818cc; padding: 0.3em 0.8em; border-radius: 8px;">Gallery &rarr;</a>
+
+        <h2 style="text-align: center; color: #FFD700; font-size: 2.2em; margin-top: 1.5em; margin-bottom: 0.5em; letter-spacing: 2px;">Hobbies</h2>
+
+          <!-- Picture slot with arrows -->
+          <div id="picture-slot" style="display: flex; align-items: center; justify-content: center; margin: 2em 0; gap: 2.5em;">
+            <button id="prev-img" style="font-size: 4em; background: none; border: none; color: #7fffd4; cursor: pointer; padding: 0 0.2em;">&#8592;</button>
+            <img id="main-img" src="assets/0719251700.jpg" alt="Gallery Image" style="max-width: 700px; max-height: 500px; width: 100vw; height: auto; border-radius: 18px; box-shadow: 0 4px 24px #000a; background: #222;" />
+            <button id="next-img" style="font-size: 4em; background: none; border: none; color: #7fffd4; cursor: pointer; padding: 0 0.2em;">&#8594;</button>
+        <script>
+          // Add indent effect to Warhammer arrows
+          function addIndentEffect(btn) {
+            btn.addEventListener('mousedown', () => {
+              btn.style.transform = 'translateY(4px)';
+            });
+            btn.addEventListener('mouseup', () => {
+              btn.style.transform = '';
+            });
+            btn.addEventListener('mouseleave', () => {
+              btn.style.transform = '';
+            });
+          }
+          addIndentEffect(document.getElementById('prev-img'));
+          addIndentEffect(document.getElementById('next-img'));
+        </script>
+          </div>
+
+          <!-- Gallery grid -->
+          <div id="gallery-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 1em; margin-bottom: 2em;">
+            <img src="assets/0719251700.jpg" alt="Gallery Image 1" style="width: 100%; max-width: 140px; max-height: 100px; object-fit: contain; border-radius: 8px; background: #222;" />
+            <img src="assets/0723251544.jpg" alt="Gallery Image 2" style="width: 100%; max-width: 140px; max-height: 100px; object-fit: contain; border-radius: 8px; background: #222;" />
+            <img src="assets/0723251550.jpg" alt="Gallery Image 3" style="width: 100%; max-width: 140px; max-height: 100px; object-fit: contain; border-radius: 8px; background: #222;" />
+            <img src="assets/0727252158.jpg" alt="Gallery Image 4" style="width: 100%; max-width: 140px; max-height: 100px; object-fit: contain; border-radius: 8px; background: #222;" />
+          </div>
+
+          <!-- Pets Section -->
+          <h2 style="text-align: center; color: #7fffd4; font-size: 2.2em; margin-top: 2.5em; margin-bottom: 0.5em; letter-spacing: 2px;">Pets</h2>
+          <!-- Picture slot with arrows for Pets -->
+          <div id="picture-slot-pets" style="display: flex; align-items: center; justify-content: center; margin: 2em 0; gap: 2.5em;">
+            <button id="prev-img-pets" style="font-size: 4em; background: none; border: none; color: #7fffd4; cursor: pointer; padding: 0 0.2em;">&#8592;</button>
+            <img id="main-img-pets" src="assets/OIP__2_-removebg-preview.png" alt="Pets Gallery Image" style="max-width: 700px; max-height: 500px; width: 100vw; height: auto; border-radius: 18px; box-shadow: 0 4px 24px #000a; background: #222;" />
+            <button id="next-img-pets" style="font-size: 4em; background: none; border: none; color: #7fffd4; cursor: pointer; padding: 0 0.2em;">&#8594;</button>
+        <script>
+          // Add indent effect to Pets arrows
+          addIndentEffect(document.getElementById('prev-img-pets'));
+          addIndentEffect(document.getElementById('next-img-pets'));
+        </script>
+          </div>
+          <!-- Gallery grid for Pets -->
+          <div id="gallery-grid-pets" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 1em; margin-bottom: 2em;">
+            <img src="assets/OIP__2_-removebg-preview.png" alt="Pets Gallery Image 1" style="width: 100%; max-width: 140px; max-height: 100px; object-fit: contain; border-radius: 8px; background: #222;" />
+            <img src="assets/OIP__3_-removebg-preview.png" alt="Pets Gallery Image 2" style="width: 100%; max-width: 140px; max-height: 100px; object-fit: contain; border-radius: 8px; background: #222;" />
+            <img src="assets/Knights of Avarice.webp" alt="Pets Gallery Image 3" style="width: 100%; max-width: 140px; max-height: 100px; object-fit: contain; border-radius: 8px; background: #222;" />
+            <img src="assets/Adobe Express - file.png" alt="Pets Gallery Image 4" style="width: 100%; max-width: 140px; max-height: 100px; object-fit: contain; border-radius: 8px; background: #222;" />
+          </div>
+    </div>
+  <!-- Rain effect removed -->
+    <div
+      class="bottom-image-slot"
+      style="
+        position: fixed;
+        right: 2vw;
+        bottom: 2vh;
+        z-index: 10001;
+        display: flex;
+        justify-content: flex-end;
+        align-items: end;
+        pointer-events: auto;
+      "
+    >
+      <a href="Corrupted.html">
+        <img
+          src="assets/OIP__3_-removebg-preview.png"
+          alt="Bottom Slot Image"
+          style="
+            max-width: 220px;
+            max-height: 90px;
+            object-fit: contain;
+            box-shadow: 0 2px 8px #000a;
+            border-radius: 8px;
+          "
+        />
+      </a>
+    </div>
+  </body>
+  <script>
+    // Rain effect removed
+    // Gallery image switching logic for Warhammer
+    const galleryImages = [
+  'assets/0719251700.jpg',
+  'assets/0723251544.jpg',
+  'assets/0723251550.jpg',
+  'assets/0727252158.jpg',
+  'assets/Adobe Express - file.png'
+    ];
+    let currentImg = 0;
+    const mainImg = document.getElementById('main-img');
+    const prevBtn = document.getElementById('prev-img');
+    const nextBtn = document.getElementById('next-img');
+
+    function updateMainImg() {
+  mainImg.classList.remove('pop-in-img');
+  // Force reflow to restart animation
+  void mainImg.offsetWidth;
+  mainImg.src = galleryImages[currentImg];
+  mainImg.classList.add('pop-in-img');
+    }
+    prevBtn.addEventListener('click', () => {
+      currentImg = (currentImg - 1 + galleryImages.length) % galleryImages.length;
+      updateMainImg();
+    });
+    nextBtn.addEventListener('click', () => {
+      currentImg = (currentImg + 1) % galleryImages.length;
+      updateMainImg();
+    });
+
+    // Gallery image switching logic for Pets
+    const petsGalleryImages = [
+      'assets/OIP__2_-removebg-preview.png',
+      'assets/OIP__3_-removebg-preview.png',
+      'assets/Knights of Avarice.webp',
+      'assets/Adobe Express - file.png'
+    ];
+    let currentImgPets = 0;
+    const mainImgPets = document.getElementById('main-img-pets');
+    const prevBtnPets = document.getElementById('prev-img-pets');
+    const nextBtnPets = document.getElementById('next-img-pets');
+
+    function updateMainImgPets() {
+  mainImgPets.classList.remove('pop-in-img');
+  void mainImgPets.offsetWidth;
+  mainImgPets.src = petsGalleryImages[currentImgPets];
+  mainImgPets.classList.add('pop-in-img');
+    }
+    prevBtnPets.addEventListener('click', () => {
+      currentImgPets = (currentImgPets - 1 + petsGalleryImages.length) % petsGalleryImages.length;
+      updateMainImgPets();
+    });
+    nextBtnPets.addEventListener('click', () => {
+      currentImgPets = (currentImgPets + 1) % petsGalleryImages.length;
+      updateMainImgPets();
+    });
+  </script>
+</html>
