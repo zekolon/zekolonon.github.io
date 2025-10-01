@@ -24,7 +24,9 @@
         </p>
         <a href="index.html" style="position: absolute; top: 1em; left: 1em; z-index: 10; font-size: 1.1em; color: #7fffd4; text-decoration: underline; font-weight: bold; background: #181818cc; padding: 0.3em 0.8em; border-radius: 8px;">&larr; Home</a>
         <a href="portfolio.html" style="position: absolute; top: 3.2em; left: 1em; z-index: 10; font-size: 1.1em; color: #7fffd4; text-decoration: underline; font-weight: bold; background: #181818cc; padding: 0.3em 0.8em; border-radius: 8px;">&larr; Portfolio</a>
-        <a href="Music.html" style="position: absolute; top: 1em; right: 1em; z-index: 10; font-size: 1.1em; color: #7fffd4; text-decoration: underline; font-weight: bold; background: #181818cc; padding: 0.3em 0.8em; border-radius: 8px;">Gallery &rarr;</a>
+        <a href="Music.html" style="position: absolute; top: 1em; right: 1em; z-index: 10; font-size: 1.1em; color: #7fffd4; text-decoration: underline; font-weight: bold; background: #181818cc; padding: 0.3em 0.8em; border-radius: 8px;">Music &rarr;</a>
+  <!-- quick link to second gallery page, placed below the main Gallery link -->
+  <a href="GalleryP2.html" style="position: absolute; top: 3.2em; right: 1em; z-index: 10; font-size: 1.05em; color: #7fffd4; text-decoration: underline; font-weight: bold; background: #181818cc; padding: 0.28em 0.7em; border-radius: 8px;">Gallery — Page 2 &rarr;</a>
 
         <h2 style="text-align: center; color: #FFD700; font-size: 2.2em; margin-top: 1.5em; margin-bottom: 0.5em; letter-spacing: 2px;">Hobbies</h2>
         <!-- Hobby Picture slot with arrows -->
@@ -39,22 +41,22 @@
           <img src="assets/0723251544.jpg" alt="Gallery Image 2" style="width: 140px; height: 100px; object-fit: contain; border-radius: 8px; background: #222;" />
           <img src="assets/0723251550.jpg" alt="Gallery Image 3" style="width: 140px; height: 100px; object-fit: contain; border-radius: 8px; background: #222;" />
           <img src="assets/0727252158.jpg" alt="Gallery Image 4" style="width: 140px; height: 100px; object-fit: contain; border-radius: 8px; background: #222;" />
-          <img src="assets/Adobe Express - file.png" alt="Gallery Image 5" style="width: 140px; height: 100px; object-fit: contain; border-radius: 8px; background: #222;" />
-        </div>
+          <img src="assets/0813250439.jpg" alt="Gallery Image 5" style="width: 140px; height: 100px; object-fit: contain; border-radius: 8px; background: #222;" />
+</div>
         <!-- Pets Section below hobby gallery -->
         <h2 style="text-align: center; color: #7fffd4; font-size: 2.2em; margin-top: 2.5em; margin-bottom: 0.5em; letter-spacing: 2px;">Pets</h2>
         <!-- Pet Picture slot with arrows -->
         <div id="picture-slot-pets" style="display: flex; align-items: center; justify-content: center; margin: 2em 0; gap: 2.5em;">
           <button id="prev-img-pets" style="font-size: 4em; background: none; border: none; color: #7fffd4; cursor: pointer; padding: 0 0.2em;">&#8592;</button>
-          <img id="main-img-pets" src="assets/OIP__2_-removebg-preview.png" alt="Pets Gallery Image" style="max-width: 700px; max-height: 500px; width: 100vw; height: auto; border-radius: 18px; box-shadow: 0 4px 24px #000a; background: #222;" />
+          <img id="main-img-pets" src="assets/0114251523a.jpg" alt="Pets Gallery Image" style="max-width: 700px; max-height: 500px; width: 100vw; height: auto; border-radius: 18px; box-shadow: 0 4px 24px #000a; background: #222;" />
           <button id="next-img-pets" style="font-size: 4em; background: none; border: none; color: #7fffd4; cursor: pointer; padding: 0 0.2em;">&#8594;</button>
         </div>
         <!-- Pet Gallery grid: 4 images in a single row, centered -->
         <div id="gallery-grid-pets" style="display: flex; justify-content: center; gap: 1em; margin-bottom: 2em; flex-wrap: nowrap;">
-          <img src="assets/OIP__2_-removebg-preview.png" alt="Pets Gallery Image 1" style="width: 140px; height: 100px; object-fit: contain; border-radius: 8px; background: #222;" />
-          <img src="assets/OIP__3_-removebg-preview.png" alt="Pets Gallery Image 2" style="width: 140px; height: 100px; object-fit: contain; border-radius: 8px; background: #222;" />
-          <img src="assets/Knights of Avarice.webp" alt="Pets Gallery Image 3" style="width: 140px; height: 100px; object-fit: contain; border-radius: 8px; background: #222;" />
-          <img src="assets/Adobe Express - file.png" alt="Pets Gallery Image 4" style="width: 140px; height: 100px; object-fit: contain; border-radius: 8px; background: #222;" />
+          <img src="assets/0114251523a.jpg" alt="Pets Gallery Image 1" style="width: 140px; height: 100px; object-fit: contain; border-radius: 8px; background: #222;" />
+          <img src="assets/0115241441.jpg" alt="Pets Gallery Image 2" style="width: 140px; height: 100px; object-fit: contain; border-radius: 8px; background: #222;" />
+          <img src="assets/1007241637f~2.jpg" alt="Pets Gallery Image 3" style="width: 140px; height: 100px; object-fit: contain; border-radius: 8px; background: #222;" />
+          <img src="assets/0721252021.jpg" alt="Pets Gallery Image 4" style="width: 140px; height: 100px; object-fit: contain; border-radius: 8px; background: #222;" />
         </div>
       </div>
   <!-- Rain effect removed -->
@@ -94,6 +96,7 @@
   'assets/0723251544.jpg',
   'assets/0723251550.jpg',
   'assets/0727252158.jpg',
+  'assets/0813250439.jpg',
     ];
     let currentImg = 0;
     const mainImg = document.getElementById('main-img');
@@ -118,10 +121,11 @@
 
     // Gallery image switching logic for Pets
     const petsGalleryImages = [
-      'assets/OIP__2_-removebg-preview.png',
-      'assets/OIP__3_-removebg-preview.png',
-      'assets/Knights of Avarice.webp',
-      'assets/Adobe Express - file.png'
+      'assets/0114251523a.jpg',
+      'assets/0115241441.jpg',
+      'assets/1007241637f~2.jpg',
+      'assets/0721252021.jpg'
+
     ];
     let currentImgPets = 0;
     const mainImgPets = document.getElementById('main-img-pets');
@@ -189,5 +193,51 @@
     highlightCurrentPets();
   }
 })();
+</script>
+<!-- Music Player -->
+<div
+  id="music-player"
+  style="
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100vw;
+    background: #181818ee;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5em 1em;
+    z-index: 9999;
+    box-shadow: 0 -2px 12px #000a;
+    font-family: inherit;
+  "
+>
+  <span
+    id="song-title"
+    style="
+      margin-right: 1em;
+      font-weight: bold;
+      font-size: 1em;
+      letter-spacing: 1px;
+    "
+    >Dimensional Voyager by Jay Tholen</span
+  >
+  <audio
+    id="audio-player"
+    src="assets/Jay Tholen - Hypnospace Outlaw OST Vol. 2 - 10 Dimensional Voyager.mp3"
+    autoplay
+    controls
+    loop
+    style="width: 300px"
+  ></audio>
+</div>
+<script>
+  // Ensure autoplay works and show song title
+  const audio = document.getElementById("audio-player");
+  audio.volume = 0.7;
+  audio.play().catch(() => {});
+  // Optionally, update song title dynamically if you want to change tracks
 </script>
 </html>
