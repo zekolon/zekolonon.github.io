@@ -1,3 +1,15 @@
+/* Nicer video (iframe) edges for music.html */
+iframe {
+  border-radius: 18px;
+  box-shadow: 0 4px 24px #000a;
+  border: none;
+  overflow: hidden;
+}
+/* Arrow button click effect for gallery */
+.gallery-arrow:active {
+  transform: scale(0.92) translateY(2px);
+  filter: brightness(0.7);
+}
 /* Pop-in animation for gallery alternator images */
 .pop-in-img {
   opacity: 0;
@@ -153,16 +165,24 @@ h1 {
   margin: 2em 0 2.5em 0;
 }
 .hypno-link {
-  color: #7fffd4;
+  color: #181818;
   text-decoration: none;
   font-weight: bold;
-  font-size: 24px;
-  border-bottom: 2px solid transparent;
-  transition: border 0.2s, color 0.2s;
+  font-size: 20px;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #7fffd4 0%, #3a7bd5 100%);
+  padding: 0.5em 1.2em;
+  margin: 0.2em 0;
+  box-shadow: 0 2px 8px #0003;
+  border: none;
+  display: inline-block;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.1s;
 }
 .hypno-link:hover {
   color: #fff;
-  border-bottom: 2px solid #7fffd4;
+  background: linear-gradient(90deg, #3a7bd5 0%, #7fffd4 100%);
+  box-shadow: 0 4px 16px #0005;
+  transform: translateY(-2px) scale(1.04);
 }
 
 .hypno-box {
