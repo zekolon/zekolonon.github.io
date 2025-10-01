@@ -90,7 +90,7 @@ profilePic.addEventListener('click', function() {
         <div style="display: flex; flex-direction: column; align-items: flex-start;">
           <h1 style="margin-bottom: 18px;">Welcome to My Website!</h1>
           <p style="text-align: center;">
-            This website is where i post images relating to my hobbies and more!
+            This website is where i post images relating to my hobbies and more! This website was inspired by <span id="scramble-hypno" style="color:inherit; background:none; text-shadow:none; text-decoration:none; border:none; outline:none; padding:0; margin:0;">Hypnospace Outlaw</span>!
           </p>
           <div class="hypno-links" style="justify-content: flex-start; flex-direction: column; align-items: flex-start; gap: 1em;">
             <a href="portfolio.html" class="hypno-link">Portfolio</a>
@@ -99,6 +99,22 @@ profilePic.addEventListener('click', function() {
           </div>
         </div>
         <div style="flex: 0 0 auto; margin-left: 48px; display: flex; flex-direction: column; align-items: flex-start;">
+        <script>
+        // Permanent scramble all text on hidden Hypnospace Outlaw click
+        function scrambleText(text) {
+          const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=[]{};:,.<>?';
+          return text.split('').map(c => (c === ' ' ? ' ' : chars[Math.floor(Math.random() * chars.length)])).join('');
+        }
+        const scrambleEls = () => document.querySelectorAll('h1, h2, h3, h4, h5, h6, p, span, a, .status-bar, .status-text, .status-right');
+        document.getElementById('scramble-hypno').addEventListener('click', function() {
+          // Hide the trigger so it's secret
+          this.style.display = 'none';
+          const els = scrambleEls();
+          els.forEach(el => {
+            el.textContent = scrambleText(el.textContent);
+          });
+        });
+        </script>
           <img id="corrupted-large-img" src="assets/1743177732956.png" alt="Corrupted Dimension" style="max-width: 90vw; max-width: 400px; max-height: 480px; display: none; border-radius: 18px; box-shadow: 0 8px 32px #000a; margin-top: 8px; display: block;" />
         </div>
       </div>
@@ -142,9 +158,6 @@ profilePic.addEventListener('click', function() {
       </a>
     </div>
   </body>
-  <script>
-    // Rain effect removed
-  </script>
 </html>
     <!-- Music Player -->
     <div
