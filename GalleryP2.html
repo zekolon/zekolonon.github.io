@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gallery-Page-2</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="status-bar-container"></div>
+  <script>
+    // Dynamically load the shared status bar
+    fetch('status-bar.html')
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById('status-bar-container').innerHTML = html;
+      });
+  </script>
+   <div class="main-content" style="display: flex; flex-direction: row; align-items: flex-start;">
+      <div style="flex: 1; display: flex; flex-direction: column; align-items: center;">
+        <h1>Gallery</h1>
+        <p style="text-align: center;">
+          This is my Gallery where I put pictures relating to my hobbies and etc.
+        </p>
+        <a href="index.html" style="position: absolute; top: 1em; left: 1em; z-index: 10; font-size: 1.1em; color: #7fffd4; text-decoration: underline; font-weight: bold; background: #181818cc; padding: 0.3em 0.8em; border-radius: 8px;">&larr; Home</a>
+        <a href="portfolio.html" style="position: absolute; top: 3.2em; left: 1em; z-index: 10; font-size: 1.1em; color: #7fffd4; text-decoration: underline; font-weight: bold; background: #181818cc; padding: 0.3em 0.8em; border-radius: 8px;">&larr; Portfolio</a>
+        <a href="Music.html" style="position: absolute; top: 1em; right: 1em; z-index: 10; font-size: 1.1em; color: #7fffd4; text-decoration: underline; font-weight: bold; background: #181818cc; padding: 0.3em 0.8em; border-radius: 8px;">Music &rarr;</a>
+  <!-- quick link to second gallery page, placed below the main Gallery link -->
+  <a href="Gallery.html" style="position: absolute; top: 5.7em; left: 1em; z-index: 10; font-size: 1.05em; color: #7fffd4; text-decoration: underline; font-weight: bold; background: #181818cc; padding: 0.28em 0.7em; border-radius: 8px;">&larr; Gallery - Page 1 </a>
+
+        <h2 style="text-align: center; color: #FFD700; font-size: 2.2em; margin-top: 1.5em; margin-bottom: 0.5em; letter-spacing: 2px;">Gallery — Page 2</h2>
+
+        <!-- 3-column image grid (rows of 3). Click an image to open a pop-out modal. -->
+        <div class="grid-4" id="grid-3">
+          <img src="assets/0719251700.jpg" alt="" loading="lazy" />
+          <img src="assets/0723251544.jpg" alt="" loading="lazy" />
+          <img src="assets/0723251550.jpg" alt="" loading="lazy" />
+          <img src="assets/0727252158.jpg" alt="" loading="lazy" />
+          <img src="assets/0813250439.jpg" alt="" loading="lazy" />
+          <img src="assets/0825250554.jpg" alt="" loading="lazy" />
+          <img src="assets/0828250533.jpg" alt="" loading="lazy" />
+          <img src="assets/0114251523a.jpg" alt="" loading="lazy" />
+          <img src="assets/0115241441.jpg" alt="" loading="lazy" />
+          <img src="assets/1007241637f~2.jpg" alt="" loading="lazy" />
+          <img src="assets/0721252021.jpg" alt="" loading="lazy" />
+</div>
+      </div>
+  <!-- Rain effect removed -->
+    <div
+      class="bottom-image-slot"
+      style="
+        position: fixed;
+        right: 2vw;
+        bottom: 2vh;
+        z-index: 10001;
+        display: flex;
+        justify-content: flex-end;
+        align-items: end;
+        pointer-events: auto;
+      "
+    >
+      <a href="Corrupted.html">
+        <img
+          src="assets/OIP__3_-removebg-preview.png"
+          alt="Bottom Slot Image"
+          style="
+            max-width: 220px;
+            max-height: 90px;
+            object-fit: contain;
+            box-shadow: 0 2px 8px #000a;
+            border-radius: 8px;
+          "
+        />
+      </a>
+    </div>
+  </body>
+  <!-- Modal for popping out images -->
+  <div class="modal" id="modal">
+    <div>
+      <button class="close" id="modal-close">×</button>
+      <img src="" alt="" id="modal-img" />
+    </div>
+  </div>
+  <script>
+    (function(){
+      const grid = document.getElementById('grid-3');
+      if (!grid) return;
+      const imgs = Array.from(grid.querySelectorAll('img'));
+      const modal = document.getElementById('modal');
+      const modalImg = document.getElementById('modal-img');
+      const modalClose = document.getElementById('modal-close');
+
+      // Lightweight modal opener: prefer data-large, otherwise use thumbnail src.
+      imgs.forEach(img => {
+        img.addEventListener('click', ()=>{
+          const explicit = img.getAttribute('data-large');
+          const srcToUse = explicit || img.src;
+          // preload the image to avoid flicker; show modal when loaded
+          const pre = new Image();
+          pre.onload = () => {
+            modalImg.src = srcToUse;
+            modal.classList.add('active');
+          };
+          pre.onerror = () => {
+            // fallback immediately to the thumbnail if preload fails
+            modalImg.src = img.src;
+            modal.classList.add('active');
+          };
+          pre.src = srcToUse;
+        });
+      });
+      modalClose.addEventListener('click', ()=> modal.classList.remove('active'));
+      modal.addEventListener('click', (e)=> { if (e.target === modal) modal.classList.remove('active'); });
+      document.addEventListener('keydown', (e)=> { if (e.key === 'Escape') modal.classList.remove('active'); });
+    })();
+  </script>
+  <script>
+    // Rain effect removed
+    // Gallery image switching logic for Warhammer
+    const galleryImages = [
+  'assets/0719251700.jpg',
+  'assets/0723251544.jpg',
+  'assets/0723251550.jpg',
+  'assets/0727252158.jpg',
+  'assets/0813250439.jpg',
+    'assets/0813250439.jpg'
+    ];
+    let currentImg = 0;
+    const mainImg = document.getElementById('main-img');
+    const prevBtn = document.getElementById('prev-img');
+    const nextBtn = document.getElementById('next-img');
+
+    function updateMainImg() {
+  mainImg.classList.remove('pop-in-img');
+  // Force reflow to restart animation
+  void mainImg.offsetWidth;
+  mainImg.src = galleryImages[currentImg];
+  mainImg.classList.add('pop-in-img');
+    }
+    prevBtn.addEventListener('click', () => {
+      currentImg = (currentImg - 1 + galleryImages.length) % galleryImages.length;
+      updateMainImg();
+    });
+    nextBtn.addEventListener('click', () => {
+      currentImg = (currentImg + 1) % galleryImages.length;
+      updateMainImg();
+    });
+
+    // Gallery image switching logic for Pets
+    const petsGalleryImages = [
+      'assets/0114251523a.jpg',
+      'assets/0115241441.jpg',
+      'assets/1007241637f~2.jpg',
+      'assets/0721252021.jpg'
+
+    ];
+    let currentImgPets = 0;
+    const mainImgPets = document.getElementById('main-img-pets');
+    const prevBtnPets = document.getElementById('prev-img-pets');
+    const nextBtnPets = document.getElementById('next-img-pets');
+
+    function updateMainImgPets() {
+  mainImgPets.classList.remove('pop-in-img');
+  void mainImgPets.offsetWidth;
+  mainImgPets.src = petsGalleryImages[currentImgPets];
+  mainImgPets.classList.add('pop-in-img');
+    }
+    prevBtnPets.addEventListener('click', () => {
+      currentImgPets = (currentImgPets - 1 + petsGalleryImages.length) % petsGalleryImages.length;
+      updateMainImgPets();
+    });
+    nextBtnPets.addEventListener('click', () => {
+      currentImgPets = (currentImgPets + 1) % petsGalleryImages.length;
+      updateMainImgPets();
+    });
+  </script>
+  <script>
+// Highlight gallery image when shown in picture slot
+(function() {
+  const mainImg = document.getElementById('main-img');
+  const galleryGrid = document.getElementById('gallery-grid');
+  if (mainImg && galleryGrid) {
+    function highlightCurrent() {
+      const gridImgs = galleryGrid.querySelectorAll('img');
+      gridImgs.forEach(img => {
+        if (img.src === mainImg.src || img.getAttribute('src') === mainImg.getAttribute('src')) {
+          img.style.outline = '4px solid #fff';
+          img.style.boxShadow = '0 0 16px #fff, 0 4px 24px #000a';
+          img.style.zIndex = 2;
+        } else {
+          img.style.outline = '';
+          img.style.boxShadow = '';
+          img.style.zIndex = '';
+        }
+      });
+    }
+    mainImg.addEventListener('load', highlightCurrent);
+    highlightCurrent();
+  }
+
+  // Pets gallery highlight
+  const mainImgPets = document.getElementById('main-img-pets');
+  const galleryGridPets = document.getElementById('gallery-grid-pets');
+  if (mainImgPets && galleryGridPets) {
+    function highlightCurrentPets() {
+      const gridImgs = galleryGridPets.querySelectorAll('img');
+      gridImgs.forEach(img => {
+        if (img.src === mainImgPets.src || img.getAttribute('src') === mainImgPets.getAttribute('src')) {
+          img.style.outline = '4px solid #fff';
+          img.style.boxShadow = '0 0 16px #fff, 0 4px 24px #000a';
+          img.style.zIndex = 2;
+        } else {
+          img.style.outline = '';
+          img.style.boxShadow = '';
+          img.style.zIndex = '';
+        }
+      });
+    }
+    mainImgPets.addEventListener('load', highlightCurrentPets);
+    highlightCurrentPets();
+  }
+})();
+</script>
+<!-- Music Player -->
+<div
+  id="music-player"
+  style="
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100vw;
+    background: #181818ee;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5em 1em;
+    z-index: 9999;
+    box-shadow: 0 -2px 12px #000a;
+    font-family: inherit;
+  "
+>
+  <span
+    id="song-title"
+    style="
+      margin-right: 1em;
+      font-weight: bold;
+      font-size: 1em;
+      letter-spacing: 1px;
+    "
+    >Dimensional Voyager by Jay Tholen</span
+  >
+  <audio
+    id="audio-player"
+    src="assets/Jay Tholen - Hypnospace Outlaw OST Vol. 2 - 10 Dimensional Voyager.mp3"
+    autoplay
+    controls
+    loop
+    style="width: 300px"
+  ></audio>
+</div>
+<script>
+  // Ensure autoplay works and show song title
+  const audio = document.getElementById("audio-player");
+  audio.volume = 0.7;
+  audio.play().catch(() => {});
+  // Optionally, update song title dynamically if you want to change tracks
+</script>
+</html>
